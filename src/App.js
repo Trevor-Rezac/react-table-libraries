@@ -3,7 +3,8 @@ import MaterialTable from 'material-table';
 import peopleData from './data';
 import columns from './columns';
 import * as V from 'victory'; 
-import { VictoryBar, VictoryChart } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+import { VictoryTheme } from 'victory';
 
 function App() {
 
@@ -45,13 +46,46 @@ function App() {
     return finalArr;
   }
 
+  function getStates(arr) {
+    const statesArr = [];
+    for (let person of arr) {
+      if (statesArr.includes(person.state)) {
+        () => {};
+      } else {
+        statesArr.push(person.state);
+      }
+    }
+    // console.log(statesArr);
+    return statesArr;
+  }
+  
+  const numberArr = [];
+  for (let i = 1; i <= 48; i++) {
+    numberArr.push(i);
+  }
+
+  console.log(numberArr);
+  getStates(peopleData);
 
   return (
     <div className="App">
       <MaterialTable data={peopleData}
         columns={columns}
       />
-      <VictoryChart>
+      <VictoryChart
+        domainPadding={15}
+        theme={VictoryTheme.material}
+      >
+        <VictoryAxis 
+          tickValues={[getStates(peopleData)]}
+          style={{
+            tickLabels: { fontSize: 6, angle: 45, padding: 15 },
+          }}
+          padding={100}
+        />
+        <VictoryAxis 
+          dependentAxis
+        />
         <VictoryBar 
           data={getPeopleInState(peopleData)}
           x='state'
