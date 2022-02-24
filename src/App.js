@@ -5,11 +5,11 @@ import columns from './columns';
 import * as V from 'victory'; 
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryPie } from 'victory';
 import { VictoryTheme } from 'victory';
-import { getPeopleInState, getStates, getPeopleInTimeZones } from './data-utils';
+import { getPeopleInState, getStates, getPeopleInTimeZones, getBreakdownOfGenders } from './data-utils';
 
 function App() {
 
-  getPeopleInTimeZones(peopleData);
+  getBreakdownOfGenders(peopleData);
 
   return (
     <div className="App">
@@ -37,12 +37,12 @@ function App() {
         />
       </VictoryChart>
       <VictoryPie 
-        data={getPeopleInTimeZones(peopleData)}
+        data={getBreakdownOfGenders(peopleData)}
         style={{
           labels: {
             fontSize: 6,
-            angle: 75,
-            padding: 5
+            angle: 45,
+            padding: 15
           }
         }}
       />

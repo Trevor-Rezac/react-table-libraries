@@ -58,3 +58,27 @@ export function getPeopleInTimeZones(arr) {
   // console.log(finalArr);
   return finalArr; 
 }
+
+export function getBreakdownOfGenders(arr) {
+  const countingHashMap = arr.reduce((accumulator, person) => {
+    if (accumulator[person.gender]) {
+      accumulator[person.gender]++;
+    } else {
+      accumulator[person.gender] = 1;
+    }
+    // console.log('||', accumulator);
+    return accumulator;
+  }, {});
+
+  const keysArr = Object.entries(countingHashMap);
+  // console.log('||', keysArr);
+
+  const finalArr = keysArr.map((key) => {
+    return {
+      x: key[0],
+      y: key[1]
+    };
+  });
+  // console.log('||', finalArr);
+  return finalArr;
+}
