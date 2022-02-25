@@ -8,8 +8,6 @@ import { getPeopleInState, getStates, getPeopleInTimeZones, getBreakdownOfGender
 
 function App() {
 
-  getBreakdownOfGenders(peopleData);
-
   return (
     <div className="App">
       <MaterialTable data={peopleData}
