@@ -2,7 +2,6 @@ import './App.css';
 import MaterialTable from 'material-table';
 import peopleData from './data';
 import columns from './columns';
-import * as V from 'victory'; 
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryPie, VictoryLine, VictoryTheme } from 'victory';
 import { getPeopleInState, getStates, getPeopleInTimeZones, getBreakdownOfGenders } from './data-utils';
 
