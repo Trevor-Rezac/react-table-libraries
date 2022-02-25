@@ -3,9 +3,9 @@ import MaterialTable from 'material-table';
 import peopleData from './data';
 import columns from './columns';
 import * as V from 'victory'; 
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryPie } from 'victory';
-import { VictoryTheme } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryPie, VictoryLine, VictoryTheme } from 'victory';
 import { getPeopleInState, getStates, getPeopleInTimeZones, getBreakdownOfGenders } from './data-utils';
+
 
 function App() {
 
@@ -46,6 +46,17 @@ function App() {
           }
         }}
       />
+      <VictoryChart>
+        <VictoryLine 
+          data={getPeopleInTimeZones(peopleData)}
+          style={{
+            labels: { 
+              fontSize: 6,
+              angle: 45 }
+          }}
+          labels={({ datum }) => datum.x}
+        />
+      </VictoryChart>
     </div>
   );
 }
